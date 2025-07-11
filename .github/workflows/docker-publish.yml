@@ -1,6 +1,7 @@
 name: Deploy Spring Boot
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
