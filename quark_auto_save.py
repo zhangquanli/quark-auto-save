@@ -218,7 +218,7 @@ class MagicRename:
                 replace = self.magic_regex[keyword]["replace"]
         return pattern, replace
 
-    def sub(self, pattern, replace, file_name):
+    def sub(self, pattern, replace, file_name, task):
         """魔法正则、变量替换"""
         if not replace:
             return file_name
@@ -240,6 +240,11 @@ class MagicRename:
                                 value = (
                                     str(datetime.now().year)[: (8 - len(value))] + value
                                 )
+                                
+                            if key == "{E}" and task['episodeOffset']:
+                                episodeOffset = int(task['episodeOffset'])
+                                value = value + episodeOffset
+                                
                             replace = replace.replace(key, value)
                             break
                 # 非正则类替换变量
@@ -896,7 +901,7 @@ class Quark:
                         need_save_list.append(share_file)
                     else:
                         # 替换后的文件名
-                        file_name_re = mr.sub(pattern, replace, share_file["file_name"])
+                        file_name_re = mr.sub(pattern, replace, share_file["file_name"], task)
                         # 判断替换后的文件名是否存在
                         if not mr.is_exists(
                             file_name_re,
