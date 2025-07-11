@@ -347,6 +347,14 @@
                       </datalist>
                     </div>
                   </div>
+                  <div class="form-group row" title="用于给集数的数字进行加减，如：S01E01，集数偏移设为24，则最后为S01E25">
+                    <label class="col-sm-2 col-form-label">集数偏移</label>
+                    <div class="col-sm-10">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="可选，在动漫分季和tmdb上不一致时非常有用" v-model="task.episodeOffset">
+                      </div>
+                    </div>
+                  </div>
                   <div class="form-group row" title="只转存修改日期>选中文件的文件，在容量不够或几百集动漫的场景下非常有用">
                     <label class="col-sm-2 col-form-label">文件起始</label>
                     <div class="col-sm-10">
