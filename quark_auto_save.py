@@ -241,9 +241,10 @@ class MagicRename:
                                     str(datetime.now().year)[: (8 - len(value))] + value
                                 )
                                 
-                            if key == "{E}" and task['episodeOffset']:
+                            if key == "{E}" and len(task['episodeOffset']) > 0:
                                 episodeOffset = int(task['episodeOffset'])
-                                value = str(int(value) + episodeOffset)
+                                episode = int(value) + episodeOffset
+                                value = episode > 9 ? str(episode) : "0" + str(episode)
                                 
                             replace = replace.replace(key, value)
                             break
