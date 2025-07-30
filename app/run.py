@@ -324,7 +324,7 @@ def get_share_detail():
                 file_name_re = (
                     share_file["file_name"]
                     if share_file["dir"]
-                    else mr.sub(pattern, replace, share_file["file_name"])
+                    else mr.sub(pattern, replace, share_file["file_name"], task)
                 )
                 if file_name_saved := mr.is_exists(
                     file_name_re,
