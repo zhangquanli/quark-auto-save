@@ -244,7 +244,10 @@ class MagicRename:
                             if key == "{E}" and len(task['episodeOffset']) > 0:
                                 episodeOffset = int(task['episodeOffset'])
                                 episode = int(value) + episodeOffset
-                                value = episode > 9 ? str(episode) : "0" + str(episode)
+                                if episode > 9:
+                                    value = str(episode)
+                                else:
+                                    value = "0" + str(episode)
                                 
                             replace = replace.replace(key, value)
                             break
